@@ -1,0 +1,5 @@
+Make sure to be careful in running these files.  Once files have started being run it may be impossible (without shutting down the process) to stop them before the simulations are complete which may take anywhere from hours to days depending on the computer you posses.
+
+If you wish to stop any simulations before they have finished running, please press Ctrl+Alt+Tab to shut down the MATLAB process.
+
+This applies to BOTH the *.m and *.slx files.  Data and figures should be fine on all systems.
