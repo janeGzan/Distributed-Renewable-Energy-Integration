@@ -1,0 +1,548 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24633,        540]
+NotebookOptionsPosition[     24203,        524]
+NotebookOutlinePosition[     24545,        539]
+CellTagsIndexPosition[     24502,        536]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"QLD1RawData", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<https://raw.githubusercontent.com/janeGzan/Distributed-Renewable-\
+Energy-Integration/master/Datasets/AEMO%20NEM%20Historical/PRICE_AND_DEMAND_\
+QLD1_new.csv\>\"", ",", "\"\<Dataset\>\"", ",", 
+     RowBox[{"\"\<HeaderLines\>\"", "\[Rule]", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"QLD1GroupedData", "=", 
+    RowBox[{"QLD1RawData", "[", 
+     RowBox[{
+      RowBox[{"GroupBy", "[", "\"\<YEAR\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<MONTH\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<DAY\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<TIME\>\"", "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NSW1RawData", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<https://raw.githubusercontent.com/janeGzan/Distributed-Renewable-\
+Energy-Integration/master/Datasets/AEMO%20NEM%20Historical/PRICE_AND_DEMAND_\
+NSW1.csv\>\"", ",", "\"\<Dataset\>\"", ",", 
+     RowBox[{"\"\<HeaderLines\>\"", "\[Rule]", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NSW1GroupedData", "=", 
+    RowBox[{"NSW1RawData", "[", 
+     RowBox[{
+      RowBox[{"GroupBy", "[", "\"\<YEAR\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<MONTH\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<DAY\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<TIME\>\"", "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SA1RawData", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<https://raw.githubusercontent.com/janeGzan/Distributed-Renewable-\
+Energy-Integration/master/Datasets/AEMO%20NEM%20Historical/PRICE_AND_DEMAND_\
+SA1.csv\>\"", ",", "\"\<Dataset\>\"", ",", 
+     RowBox[{"\"\<HeaderLines\>\"", "\[Rule]", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SA1GroupedData", "=", 
+    RowBox[{"SA1RawData", "[", 
+     RowBox[{
+      RowBox[{"GroupBy", "[", "\"\<YEAR\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<MONTH\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<DAY\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<TIME\>\"", "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"VIC1RawData", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<https://raw.githubusercontent.com/janeGzan/Distributed-Renewable-\
+Energy-Integration/master/Datasets/AEMO%20NEM%20Historical/PRICE_AND_DEMAND_\
+VIC1.csv\>\"", ",", "\"\<Dataset\>\"", ",", 
+     RowBox[{"\"\<HeaderLines\>\"", "\[Rule]", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"VIC1GroupedData", "=", 
+    RowBox[{"VIC1RawData", "[", 
+     RowBox[{
+      RowBox[{"GroupBy", "[", "\"\<YEAR\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<MONTH\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<DAY\>\"", "]"}], ",", 
+      RowBox[{"GroupBy", "[", "\"\<TIME\>\"", "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"TAS1RawData", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<https://raw.githubusercontent.com/janeGzan/Distributed-Renewable-\
+Energy-Integration/master/Datasets/AEMO%20NEM%20Historical/PRICE_AND_DEMAND_\
+TAS1.csv\>\"", ",", "\"\<Dataset\>\"", ",", 
+     RowBox[{"\"\<HeaderLines\>\"", "\[Rule]", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"TAS1GroupedData", "=", 
+   RowBox[{"TAS1RawData", "[", 
+    RowBox[{
+     RowBox[{"GroupBy", "[", "\"\<YEAR\>\"", "]"}], ",", 
+     RowBox[{"GroupBy", "[", "\"\<MONTH\>\"", "]"}], ",", 
+     RowBox[{"GroupBy", "[", "\"\<DAY\>\"", "]"}], ",", 
+     RowBox[{"GroupBy", "[", "\"\<TIME\>\"", "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"TableForm", "[", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"GeoRegionValuePlot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Entity", "[", 
+             RowBox[{"\"\<AdministrativeDivision\>\"", ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Queensland\>\"", ",", "\"\<Australia\>\""}], 
+               "}"}]}], "]"}], "\[Rule]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"QLD1GroupedData", "[", 
+               RowBox[{
+                RowBox[{"Key", "[", "Year", "]"}], ",", 
+                RowBox[{"Key", "[", "Month", "]"}], ",", 
+                RowBox[{"Key", "[", "Day", "]"}], ",", 
+                RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+              RowBox[{"All", ",", "Set"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Entity", "[", 
+             RowBox[{"\"\<AdministrativeDivision\>\"", ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<NewSouthWales\>\"", ",", "\"\<Australia\>\""}], 
+               "}"}]}], "]"}], "\[Rule]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"NSW1GroupedData", "[", 
+               RowBox[{
+                RowBox[{"Key", "[", "Year", "]"}], ",", 
+                RowBox[{"Key", "[", "Month", "]"}], ",", 
+                RowBox[{"Key", "[", "Day", "]"}], ",", 
+                RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+              RowBox[{"All", ",", "Set"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Entity", "[", 
+             RowBox[{"\"\<AdministrativeDivision\>\"", ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Victoria\>\"", ",", "\"\<Australia\>\""}], 
+               "}"}]}], "]"}], "\[Rule]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"VIC1GroupedData", "[", 
+               RowBox[{
+                RowBox[{"Key", "[", "Year", "]"}], ",", 
+                RowBox[{"Key", "[", "Month", "]"}], ",", 
+                RowBox[{"Key", "[", "Day", "]"}], ",", 
+                RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+              RowBox[{"All", ",", "Set"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Entity", "[", 
+             RowBox[{"\"\<AdministrativeDivision\>\"", ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<SouthAustralia\>\"", ",", "\"\<Australia\>\""}], 
+               "}"}]}], "]"}], "\[Rule]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"SA1GroupedData", "[", 
+               RowBox[{
+                RowBox[{"Key", "[", "Year", "]"}], ",", 
+                RowBox[{"Key", "[", "Month", "]"}], ",", 
+                RowBox[{"Key", "[", "Day", "]"}], ",", 
+                RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+              RowBox[{"All", ",", "Set"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Entity", "[", 
+             RowBox[{"\"\<AdministrativeDivision\>\"", ",", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Tasmania\>\"", ",", "\"\<Australia\>\""}], 
+               "}"}]}], "]"}], "\[Rule]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"TAS1GroupedData", "[", 
+               RowBox[{
+                RowBox[{"Key", "[", "Year", "]"}], ",", 
+                RowBox[{"Key", "[", "Month", "]"}], ",", 
+                RowBox[{"Key", "[", "Day", "]"}], ",", 
+                RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+              RowBox[{"All", ",", "Set"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}]}], "\[IndentingNewLine]", "}"}],
+          ",", "\[IndentingNewLine]", 
+         RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "->", "Medium"}]}], "\[IndentingNewLine]", 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Grid", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"\"\<Queensland\>\"", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"QLD1GroupedData", "[", 
+                RowBox[{
+                 RowBox[{"Key", "[", "Year", "]"}], ",", 
+                 RowBox[{"Key", "[", "Month", "]"}], ",", 
+                 RowBox[{"Key", "[", "Day", "]"}], ",", 
+                 RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+               RowBox[{"All", ",", "Set"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"\"\<New South Wales\>\"", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"NSW1GroupedData", "[", 
+                RowBox[{
+                 RowBox[{"Key", "[", "Year", "]"}], ",", 
+                 RowBox[{"Key", "[", "Month", "]"}], ",", 
+                 RowBox[{"Key", "[", "Day", "]"}], ",", 
+                 RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+               RowBox[{"All", ",", "Set"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"\"\<South Australia\>\"", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"SA1GroupedData", "[", 
+                RowBox[{
+                 RowBox[{"Key", "[", "Year", "]"}], ",", 
+                 RowBox[{"Key", "[", "Month", "]"}], ",", 
+                 RowBox[{"Key", "[", "Day", "]"}], ",", 
+                 RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+               RowBox[{"All", ",", "Set"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Victoria\>\"", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"VIC1GroupedData", "[", 
+                RowBox[{
+                 RowBox[{"Key", "[", "Year", "]"}], ",", 
+                 RowBox[{"Key", "[", "Month", "]"}], ",", 
+                 RowBox[{"Key", "[", "Day", "]"}], ",", 
+                 RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+               RowBox[{"All", ",", "Set"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Tasmania\>\"", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"TAS1GroupedData", "[", 
+                RowBox[{
+                 RowBox[{"Key", "[", "Year", "]"}], ",", 
+                 RowBox[{"Key", "[", "Month", "]"}], ",", 
+                 RowBox[{"Key", "[", "Day", "]"}], ",", 
+                 RowBox[{"Key", "[", "Time", "]"}]}], "]"}], "[", 
+               RowBox[{"All", ",", "Set"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], 
+          "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}], "}"}], "\[IndentingNewLine]", "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"Year", ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{"y", ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", "2019", ",", "1998", ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "]"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Month", ",", "8"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "\[Rule]", "\"\<January\>\""}], ",", 
+       RowBox[{"2", "\[Rule]", "\"\<Februrary\>\""}], ",", 
+       RowBox[{"3", "\[Rule]", "\"\<March\>\""}], ",", 
+       RowBox[{"4", "\[Rule]", "\"\<April\>\""}], ",", 
+       RowBox[{"5", "\[Rule]", "\"\<May\>\""}], ",", 
+       RowBox[{"6", "\[Rule]", "\"\<June\>\""}], ",", 
+       RowBox[{"7", "\[Rule]", "\"\<July\>\""}], ",", 
+       RowBox[{"8", "\[Rule]", "\"\<August\>\""}], ",", 
+       RowBox[{"9", "\[Rule]", "\"\<September\>\""}], ",", 
+       RowBox[{"10", "\[Rule]", "\"\<October\>\""}], ",", 
+       RowBox[{"11", "\[Rule]", "\"\<November\>\""}], ",", 
+       RowBox[{"12", "\[Rule]", "\"\<December\>\""}]}], "}"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Day", ",", "31"}], "}"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{"y", ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", "31", ",", "1", ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "]"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Time", ",", "\"\<09:00\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<23:30\>\"", ",", "\"\<23:00\>\"", ",", "\"\<22:30\>\"", ",", 
+       "\"\<22:00\>\"", ",", "\"\<21:30\>\"", ",", "\"\<21:00\>\"", ",", 
+       "\"\<20:30\>\"", ",", "\"\<20:00\>\"", ",", "\"\<19:30\>\"", ",", 
+       "\"\<19:00\>\"", ",", "\"\<18:30\>\"", ",", "\"\<18:00\>\"", ",", 
+       "\"\<17:30\>\"", ",", "\"\<17:00\>\"", ",", "\"\<16:30\>\"", ",", 
+       "\"\<16:00\>\"", ",", "\"\<15:30\>\"", ",", "\"\<15:00\>\"", ",", 
+       "\"\<14:30\>\"", ",", "\"\<14:00\>\"", ",", "\"\<13:30\>\"", ",", 
+       "\"\<13:00\>\"", ",", "\"\<12:30\>\"", ",", "\"\<12:00\>\"", ",", 
+       "\"\<11:30\>\"", ",", "\"\<11:00\>\"", ",", "\"\<10:30\>\"", ",", 
+       "\"\<10:00\>\"", ",", "\"\<09:30\>\"", ",", "\"\<09:00\>\"", ",", 
+       "\"\<08:30\>\"", ",", "\"\<08:00\>\"", ",", "\"\<07:30\>\"", ",", 
+       "\"\<07:00\>\"", ",", "\"\<06:30\>\"", ",", "\"\<06:00\>\"", ",", 
+       "\"\<05:30\>\"", ",", "\"\<05:00\>\"", ",", "\"\<04:30\>\"", ",", 
+       "\"\<04:00\>\"", ",", "\"\<03:30\>\"", ",", "\"\<03:00\>\"", ",", 
+       "\"\<02:30\>\"", ",", "\"\<02:00\>\"", ",", "\"\<01:30\>\"", ",", 
+       "\"\<01:00\>\"", ",", "\"\<00:30\>\"", ",", "\"\<00:00\>\""}], "}"}]}],
+     "}"}], ",", "\[IndentingNewLine]", "Delimiter", ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Set", ",", "\"\<RRP\>\"", ",", "\"\<Select Dataset\>\""}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+       "\"\<RRP\>\"", "\[Rule]", "\"\<Regional Reference Price ($/MWh)\>\""}],
+        ",", 
+       RowBox[{
+       "\"\<TOTALDEMAND\>\"", "\[Rule]", "\"\<Total Demand (MW)\>\""}]}], 
+      "}"}]}], "}"}]}], "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.776810634899251*^9, 3.77681065964001*^9}, {
+   3.776814964730966*^9, 3.7768149650690613`*^9}, {3.7768180540937395`*^9, 
+   3.7768180804791946`*^9}, {3.7768188814807725`*^9, 3.776818961093149*^9}, {
+   3.776818997432006*^9, 3.776818997667376*^9}, {3.7768190279309664`*^9, 
+   3.7768190527306547`*^9}, {3.776823267212116*^9, 3.776823267368658*^9}, {
+   3.7768233549145746`*^9, 3.7768233573769894`*^9}, 3.7768234236353536`*^9, 
+   3.776823492094705*^9, {3.7768236262670865`*^9, 3.7768236298759675`*^9}, {
+   3.776858237086183*^9, 3.7768583314982367`*^9}, {3.776858390681139*^9, 
+   3.7768583994382677`*^9}, {3.776858592210422*^9, 3.776858609639889*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"8bd89eb5-2da1-45fe-88d0-086f3ce72de0"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`Day$$ = 31, $CellContext`Month$$ = 8, 
+    Set$$ = "RRP", $CellContext`Time$$ = "09:00", $CellContext`Year$$ = 2019, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`Year$$], {2019, 2018, 2017, 2016, 2015, 2014, 2013, 
+      2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 
+      2000, 1999, 1998}}, {{
+       Hold[$CellContext`Month$$], 8}, {
+      1 -> "January", 2 -> "Februrary", 3 -> "March", 4 -> "April", 5 -> 
+       "May", 6 -> "June", 7 -> "July", 8 -> "August", 9 -> "September", 10 -> 
+       "October", 11 -> "November", 12 -> "December"}}, {{
+       Hold[$CellContext`Day$$], 31}, {31, 30, 29, 28, 27, 26, 25, 24, 23, 22,
+       21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2,
+       1}}, {{
+       Hold[$CellContext`Time$$], "09:00"}, {
+      "23:30", "23:00", "22:30", "22:00", "21:30", "21:00", "20:30", "20:00", 
+       "19:30", "19:00", "18:30", "18:00", "17:30", "17:00", "16:30", "16:00",
+        "15:30", "15:00", "14:30", "14:00", "13:30", "13:00", "12:30", 
+       "12:00", "11:30", "11:00", "10:30", "10:00", "09:30", "09:00", "08:30",
+        "08:00", "07:30", "07:00", "06:30", "06:00", "05:30", "05:00", 
+       "04:30", "04:00", "03:30", "03:00", "02:30", "02:00", "01:30", "01:00",
+        "00:30", "00:00"}}, {{
+       Hold[Set$$], "RRP", "Select Dataset"}, {
+      "RRP" -> "Regional Reference Price ($/MWh)", "TOTALDEMAND" -> 
+       "Total Demand (MW)"}}}, Typeset`size$$ = {569., {213., 219.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`Year$13418$$ = 0, $CellContext`Month$13419$$ = 
+    False, $CellContext`Day$13420$$ = 0, $CellContext`Time$13421$$ = 0, 
+    Set$13422$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[1, StandardForm, "Variables" :> {
+        Set$$[$CellContext`Day$$, 31], 
+        Set$$[$CellContext`Month$$, 8], 
+        Set$$[Set$$, "RRP"], 
+        Set$$[$CellContext`Time$$, "09:00"], 
+        Set$$[$CellContext`Year$$, 2019]}, "ControllerVariables" :> {
+        Hold[$CellContext`Year$$, $CellContext`Year$13418$$, 0], 
+        Hold[$CellContext`Month$$, $CellContext`Month$13419$$, False], 
+        Hold[$CellContext`Day$$, $CellContext`Day$13420$$, 0], 
+        Hold[$CellContext`Time$$, $CellContext`Time$13421$$, 0], 
+        Hold[Set$$, Set$13422$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> TableForm[{{
+          
+          GeoRegionValuePlot[{
+           Entity["AdministrativeDivision", {"Queensland", "Australia"}] -> 
+            Part[
+              $CellContext`QLD1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1], 
+            Entity["AdministrativeDivision", {"NewSouthWales", "Australia"}] -> 
+            Part[
+              $CellContext`NSW1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1], 
+            Entity["AdministrativeDivision", {"Victoria", "Australia"}] -> 
+            Part[
+              $CellContext`VIC1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1], 
+            Entity["AdministrativeDivision", {"SouthAustralia", "Australia"}] -> 
+            Part[
+              $CellContext`SA1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1], 
+            Entity["AdministrativeDivision", {"Tasmania", "Australia"}] -> 
+            Part[
+              $CellContext`TAS1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1]}, PlotRange -> Full, 
+           ImageSize -> Medium], 
+          Grid[{{"Queensland", 
+             Part[
+              $CellContext`QLD1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1]}, {"New South Wales", 
+             Part[
+              $CellContext`NSW1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1]}, {"South Australia", 
+             Part[
+              $CellContext`SA1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1]}, {"Victoria", 
+             Part[
+              $CellContext`VIC1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1]}, {"Tasmania", 
+             Part[
+              $CellContext`TAS1GroupedData[
+               Key[$CellContext`Year$$], 
+               Key[$CellContext`Month$$], 
+               Key[$CellContext`Day$$], 
+               Key[$CellContext`Time$$]][All, Set$$], 1]}}, Frame -> All]}}], 
+      "Specifications" :> {{$CellContext`Year$$, {2019, 2018, 2017, 2016, 
+         2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 
+         2004, 2003, 2002, 2001, 2000, 1999, 
+         1998}}, {{$CellContext`Month$$, 8}, {
+         1 -> "January", 2 -> "Februrary", 3 -> "March", 4 -> "April", 5 -> 
+          "May", 6 -> "June", 7 -> "July", 8 -> "August", 9 -> "September", 
+          10 -> "October", 11 -> "November", 12 -> 
+          "December"}}, {{$CellContext`Day$$, 31}, {31, 30, 29, 28, 27, 26, 
+         25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8,
+          7, 6, 5, 4, 3, 2, 1}}, {{$CellContext`Time$$, "09:00"}, {
+         "23:30", "23:00", "22:30", "22:00", "21:30", "21:00", "20:30", 
+          "20:00", "19:30", "19:00", "18:30", "18:00", "17:30", "17:00", 
+          "16:30", "16:00", "15:30", "15:00", "14:30", "14:00", "13:30", 
+          "13:00", "12:30", "12:00", "11:30", "11:00", "10:30", "10:00", 
+          "09:30", "09:00", "08:30", "08:00", "07:30", "07:00", "06:30", 
+          "06:00", "05:30", "05:00", "04:30", "04:00", "03:30", "03:00", 
+          "02:30", "02:00", "01:30", "01:00", "00:30", "00:00"}}, 
+        Delimiter, {{Set$$, "RRP", "Select Dataset"}, {
+         "RRP" -> "Regional Reference Price ($/MWh)", "TOTALDEMAND" -> 
+          "Total Demand (MW)"}}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{620., {327., 333.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.776818164862541*^9, 3.77681913983183*^9, 
+  3.7768232562025156`*^9, 3.7768233108075094`*^9, 3.7768234092258816`*^9, 
+  3.776823484954765*^9, 3.776823545314496*^9, 3.776823698007945*^9, 
+  3.7768584850641546`*^9, 3.776858664761987*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"3423c054-f2b6-4aa8-ad66-fd3ba94e10df"]
+}, Open  ]]
+},
+WindowSize->{1504, 920},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 15493, 344, 1017, "Input",ExpressionUUID->"8bd89eb5-2da1-45fe-88d0-086f3ce72de0"],
+Cell[16076, 368, 8111, 153, 736, "Output",ExpressionUUID->"3423c054-f2b6-4aa8-ad66-fd3ba94e10df"]
+}, Open  ]]
+}
+]
+*)
+
